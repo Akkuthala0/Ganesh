@@ -8,7 +8,7 @@ import datetime
 import os
 
 # insert your Telegram bot token here
-bot = telebot.TeleBot('7543592031:AAHnlEqSQg2MC_Dimz8Hi71iMD8GfYrweTM')
+bot = telebot.TeleBot('')
 
 # Admin user IDs
 admin_id = ["6704542925"]
@@ -225,7 +225,7 @@ def handle_bgmi(message):
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
             if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 300:
-                response = "𝙔𝙊𝙐 𝘼𝙍𝙀 𝙊𝙉 𝘾𝙊𝙊𝙇𝘿𝙊𝙒𝙉 𝙒𝘼𝙄𝙏 300 𝙎𝙀𝘾𝙊𝙉𝘿𝙎 ⏳"
+                response = "𝙔𝙊𝙐 𝘼𝙍𝙀 𝙊𝙉 𝘾𝙊𝙊𝙇𝘿𝙊𝙒𝙉 𝙒𝘼𝙄𝙏 0 𝙎𝙀𝘾𝙊𝙉𝘿𝙎 ⏳"
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -236,8 +236,8 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
-            if time > 180:
-                response = "❌ 𝙀𝙍𝙍𝙊𝙍 𝙐𝙎𝙀 𝙇𝙀𝙎𝙎 𝙏𝙃𝙀𝙉 180 𝙎𝙀𝘾𝙊𝙉𝘿𝙎 ❌."
+            if time > 500:
+                response = "❌ 𝙀𝙍𝙍𝙊𝙍 𝙐𝙎𝙀 𝙇𝙀𝙎𝙎 𝙏𝙃𝙀𝙉 500 𝙎𝙀𝘾𝙊𝙉𝘿𝙎 ❌."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
